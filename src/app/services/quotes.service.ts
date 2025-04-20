@@ -6,8 +6,6 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class QuotesService {
-  private baseUrl: string =
-    'https://cors-proxy.htmldriven.com/?url=https://zenquotes.io/api/';
 
   constructor(private httpClient: HttpClient) {}
 

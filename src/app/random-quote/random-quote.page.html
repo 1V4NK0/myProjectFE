@@ -1,9 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-      <ion-title>Random quote</ion-title>
+      <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
+    <ion-title>Random quote</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,4 +13,11 @@
       <ion-title size="large">randomQuote</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <div class="container">
+    <h1>{{quote}}</h1>
+    <h4>{{author}}</h4>
+  </div>
+
+  <ion-button (click)="onPressNewQuote()">New quote</ion-button>
 </ion-content>

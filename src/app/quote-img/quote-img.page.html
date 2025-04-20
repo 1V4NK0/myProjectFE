@@ -1,19 +1,29 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-      <ion-title>Get an inspirational image with quote</ion-title>
+    <ion-buttons class="navigation">
+      <ion-buttons>
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-button [routerLink]="['/home']">Home</ion-button>
+      <ion-button [routerLink]="['/random-quote']">Random Quote</ion-button>
+      <ion-button [routerLink]="['/quote-of-the-day']">Quote of the day</ion-button>
+      <ion-button [routerLink]="['/diary']">Diary</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">quoteImg</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-title>Inspirational image</ion-title>
 
-  <img *ngIf="imageURL" [src]="imageURL">
-  
+  <div class="img-container">
+    <ion-spinner *ngIf="loading"></ion-spinner>
+    <!-- binding src to dynamically update the url -->
+    <img *ngIf="imageURL && !loading" [src]="imageURL" />
+  </div>
+
+  <div class="buttons-container">
+    <!-- event handlers -->
+    <ion-button (click)="onPressSaveImg()">save img </ion-button>
+    <ion-button (click)="onPressChangeImg()">new img</ion-button>
+  </div>
 </ion-content>

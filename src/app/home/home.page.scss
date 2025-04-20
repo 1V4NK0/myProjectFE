@@ -1,7 +1,7 @@
 // ...existing code...
 
 /* Media query for small screens (mobile devices) */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 500px) {
   .greetingsText h1 {
     font-size: 20px;  /* Smaller font size for mobile */
   }
@@ -46,7 +46,6 @@ ion-content{
   flex-direction: column;
   justify-content: center;
   min-height: 100%;
-  // --background: url("https://images.unsplash.com/photo-1700056397549-aeeaaa8d5906?q=80&w=2767&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") no-repeat center center;
   --background: url("https://wallpapers.com/images/hd/soothing-gradient-minimalism-ag84qqcgtuvlpvl8.jpg") no-repeat center center;
   --background-size: cover;  
   height: 100%; 
@@ -77,7 +76,7 @@ ion-content::part(scroll) {
 #containerButtons {
   text-align: center;
   display: flex;
-  gap: 10px;
+  gap: 20px;
   justify-content: center;
 }
 
@@ -88,13 +87,14 @@ ion-content::part(scroll) {
   --padding-top: 20px;    /* Top padding */
   --padding-bottom: 20px; /* Bottom padding */
   font-size: 15px;
-  --border-radius: 20px;
+  --border-radius: 15px;
   transition: transform 0.2s ease;
   color: white;
+  transform:scale(1.05);
 }
 
 #containerButtons ion-button:hover {
-  transform: scale(0.99);
+  transform: scale(1.025);
 }
 
 .footer {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+
 import { QuotesService } from '../services/quotes.service';
 import {
   IonBackButton,
@@ -10,7 +10,10 @@ import {
   IonHeader,
   IonTitle,
   IonToolbar,
+  IonButton,
+  
 } from '@ionic/angular/standalone';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-quote-of-the-day',
@@ -24,17 +27,24 @@ import {
     IonHeader,
     IonTitle,
     IonToolbar,
-    HttpClientModule,
+    IonButton,
     CommonModule,
     FormsModule,
+    RouterLink
   ],
 })
 export class QuoteOfTheDayPage implements OnInit {
   constructor(private quotesService: QuotesService) {}
+  quoteObj: any = {};
+  author: string = '';
+  quote: string = '';
 
   ngOnInit() {
     this.quotesService.getQuoteOfTheDay().subscribe((data) => {
-      console.log(data);
+      console.log(data[0]);
+      this.quoteObj = data[0];
+      this.author = data[0].a;
+      this.quote = data[0].q;
     });
   }
 }
