@@ -1,17 +1,62 @@
-ion-content{
-  display: flex;
-  justify-content: center;  
-  align-items: center;      /* Center vertically */
-  flex-direction: column;   /* Stack the items vertically */
-  text-align: center;       /* Center text inside the div */
-  height: 100%; 
-  --background: url("https://images.unsplash.com/photo-1700056397549-aeeaaa8d5906?q=80&w=2767&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") no-repeat center center;
-  --background-size: cover;  
-  height: 100%; 
+// ...existing code...
 
+/* Media query for small screens (mobile devices) */
+@media screen and (max-width: 768px) {
+  .greetingsText h1 {
+    font-size: 20px;  /* Smaller font size for mobile */
+  }
+
+  .greetingsText p {
+    font-size: 16px;
+  }
+
+  #containerButtons {
+    flex-direction: column;  /* Stack buttons vertically */
+    padding: 0 20px;  /* Add some horizontal padding */
+  }
+
+  #containerButtons ion-button {
+    --padding-start: 20px;
+    --padding-end: 20px;
+    --padding-top: 15px;
+    --padding-bottom: 15px;
+    font-size: 14px;
+  }
+
+  ion-content::part(scroll) {
+    margin-top: 5%;  /* Reduce top margin on mobile */
+  }
+}
+
+/* Media query for very small screens */
+@media screen and (max-width: 380px) {
+  .greetingsText h1 {
+    font-size: 32px;
+  }
+
+  .footer {
+    font-size: 12px;
+    padding: 15px;
+  }
 }
 
 
+ion-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+  // --background: url("https://images.unsplash.com/photo-1700056397549-aeeaaa8d5906?q=80&w=2767&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") no-repeat center center;
+  --background: url("https://wallpapers.com/images/hd/soothing-gradient-minimalism-ag84qqcgtuvlpvl8.jpg") no-repeat center center;
+  --background-size: cover;  
+  height: 100%; 
+  --backdrop-filter: blur(50px);  /* Adds blur effect */
+  backdrop-filter: blur(50px);
+}
+
+ion-content::part(scroll) {
+  margin-top: 10%;
+}
 
 .greetingsText {
   display: flex;
@@ -20,28 +65,46 @@ ion-content{
 }
 
 .greetingsText h1 {
-  font-size: 40px;
-  line-height: 50px;
+  font-size: 70px;
+  line-height: 70%;
+}
+
+.greetingsText p {
+  font-size: 20px;
+  
 }
 
 #containerButtons {
   text-align: center;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+#containerButtons ion-button {
+  --background: rgba(255, 255, 255, 0.3);
+  --padding-start: 30px;  /* Left padding */
+  --padding-end: 30px;    /* Right padding */
+  --padding-top: 20px;    /* Top padding */
+  --padding-bottom: 20px; /* Bottom padding */
+  font-size: 15px;
+  --border-radius: 20px;
+  transition: transform 0.2s ease;
+  color: white;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+#containerButtons ion-button:hover {
+  transform: scale(0.99);
 }
 
-#container a {
-  text-decoration: none;
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 20px;
+  z-index: 1000;
+  color:rgba(255, 255, 255, 0.5)
 }
+

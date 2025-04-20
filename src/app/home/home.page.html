@@ -8,9 +8,15 @@
   </div>
 
   <div id="containerButtons">
-    <ion-button>Get an inspirational image</ion-button>
-    <ion-button>Get today's quote</ion-button>
-    <ion-button>Get a random quote</ion-button>
+    <ion-button [routerLink]="['/quote-img']">Get an inspirational image</ion-button>
+    <ion-button [routerLink]="['/quote-of-the-day']">Get today's quote</ion-button>
+    <ion-button [routerLink]="['/random-quote']">Get a random quote</ion-button>
+    <ion-button [routerLink]="['/diary']">diary</ion-button>
+  </div>
+
+  <div class="footer">
+    <p>Made by Ivan Cherkes</p>
+    Inspirational quotes provided by <a href="https://zenquotes.io/" target="_blank">ZenQuotes API</a>
   </div>
 
 </ion-content>

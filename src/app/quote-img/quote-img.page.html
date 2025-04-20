@@ -1,6 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>quoteImg</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+      <ion-title>Get an inspirational image with quote</ion-title>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -10,4 +13,7 @@
       <ion-title size="large">quoteImg</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <img *ngIf="imageURL" [src]="imageURL">
+  
 </ion-content>
