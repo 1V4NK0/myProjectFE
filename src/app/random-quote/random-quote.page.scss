@@ -25,7 +25,7 @@ ion-content {
     color: #7f8c8d;
     margin-top: 1rem;
 
-    @media (max-width: 768px) {
+    @media (max-width: 500px) {
       font-size: 1rem;
     }
   }
@@ -52,5 +52,3 @@ ion-button:hover {
   transform: scale(0.99);
 }
 
-ion-toolbar {
-}

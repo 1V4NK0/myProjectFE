@@ -1,0 +1,37 @@
+
+
+ion-content {
+  text-align: center;
+}
+
+.container-if-empty {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  ion-button {
+    max-width: 20%;
+  }
+}
+
+ion-button {
+  margin-top: 20px;
+  font-size: 20px;
+  //change of ionic custom properties
+  --background: #23a392;
+  --padding: 20px;
+  --padding-start: 30px;
+  --padding-end: 30px;
+  --border-radius: 15px;
+  transition: 0.3s ease;
+  height: 50px;
+
+  @media (max-width: 500px) {
+    --padding: 10px;
+  }
+}
+
+ion-button:hover {
+  transform: scale(0.99);
+}
