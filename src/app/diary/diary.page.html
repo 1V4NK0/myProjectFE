@@ -8,45 +8,83 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <!-- <ul>
+  <ul>
     <li *ngFor="let log of diary">
-      <p>{{log.header}} {{log.content}}</p>
+      <ion-card (click)="setSelectedLog(log)">
+        <ion-card-header>
+          <ion-card-title>{{log.header}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content> {{log.content}} </ion-card-content>
+      </ion-card>
     </li>
-  </ul> -->
+  </ul>
 
   <div class="container-if-empty">
     <h1 *ngIf="diary.length == 0">
       Your diary has no logs, let's write something!
     </h1>
-    <ion-button (click)="onPressAddButton()">Add log</ion-button>
-    <ion-button (click)="onPressDeleteButton()">Delete log</ion-button>
+    <ion-button id="open-modal">Add log</ion-button>
+    <!-- <ion-button>Delete log</ion-button> -->
   </div>
 
-  <ion-button id="open-modal" expand="block">Open</ion-button>
-  <p>Message</p>
-  <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+  <!-- MODAL FOR ADDING NEW LOG -->
+  <ion-modal #addModal trigger="open-modal">
     <ng-template>
       <ion-header>
         <ion-toolbar>
           <ion-buttons slot="start">
-            <ion-button (click)="cancel()">Cancel</ion-button>
+            <ion-button (click)="closeAddModal()">Cancel</ion-button>
           </ion-buttons>
-          <ion-title>Welcome</ion-title>
           <ion-buttons slot="end">
-            <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+            <ion-button
+              [strong]="true"
+              (click)="onPressAddButton(title, content)"
+              >Add log</ion-button
+            >
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
       <ion-content class="ion-padding">
         <ion-item>
           <ion-input
-            label="Enter your name"
-            labelPlacement="stacked"
+            [(ngModel)]="title"
             type="text"
-            placeholder="Your name"
-            [(ngModel)]="name"
+            placeholder="Title"
           ></ion-input>
         </ion-item>
+
+        <ion-item>
+          <ion-textarea
+            [(ngModel)]="content"
+            autoGrow="true"
+            placeholder="Start writing..."
+          ></ion-textarea>
+        </ion-item>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <!-- MODAL FOR VIEWING LOG -->
+  <ion-modal #viewModal [isOpen]="isViewModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="closeViewModal()">Close</ion-button>
+          </ion-buttons>
+          <ion-buttons slot="end">
+            <ion-button
+              (click)="onPressDeleteButton(selectedLog.id)"
+              color="danger"
+            >
+              Delete
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <h2>{{selectedLog?.header}}</h2>
+        <p>{{selectedLog?.content}}</p>
       </ion-content>
     </ng-template>
   </ion-modal>
