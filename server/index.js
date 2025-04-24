@@ -8,7 +8,6 @@ const app = express();
 
 app.use(cors()); // resolves issues with CORS
 
-// Random quote
 app.get("/api/random", async (req, res) => {
   try {
     const response = await fetch("https://zenquotes.io/api/random");
@@ -19,7 +18,6 @@ app.get("/api/random", async (req, res) => {
   }
 });
 
-// Quote of the day
 app.get("/api/today", async (req, res) => {
   try {
     const response = await fetch("https://zenquotes.io/api/today");
@@ -30,7 +28,6 @@ app.get("/api/today", async (req, res) => {
   }
 });
 
-// Inspirational image
 app.get("/api/image", async (req, res) => {
   try {
     const response = await fetch("https://zenquotes.io/api/image");

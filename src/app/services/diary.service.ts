@@ -7,7 +7,7 @@ import { supabase } from './supabase';
 export class DiaryService {
   constructor() {}
 
-  //BASICALLY ALL THIS CODE IS FOR INTERACTING WITH DATABASE (SUPABASE) THIS CODE IS PROVIDED BY API SUPABASE DOCUMENTATION
+  //THIS CODE IS A SUPABASE API TO INTERACT WITH DATABASE
   async addLog(header: string, content: string) {
     const { data, error } = await supabase
       .from('Diary')
@@ -31,7 +31,6 @@ export class DiaryService {
     return Diary;
   }
 
-  //fetch the log based on ID
   async getLog(id: number) {
     const { data, error } = await supabase
       .from('Diary')
