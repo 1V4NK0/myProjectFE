@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-// import { Toast } from '@capacitor/toast'; toast does not work for me
+import { Toast } from '@capacitor/toast';
 import {
   IonModal,
   IonItem,
@@ -68,12 +68,14 @@ export class DiaryPage implements OnInit {
     await this.diaryService.addLog(title, content);
     this.diary = (await this.diaryService.getLogs()) || [];
     this.closeAddModal();
+    await this.showToast("You've created new log!");
   }
 
   async onPressDeleteButton(id: number) {
     await this.diaryService.deleteLog(id);
-    this.closeViewModal();
     this.diary = (await this.diaryService.getLogs()) || [];
+    this.closeViewModal();
+    await this.showToast("You've deleted your log");
   }
 
   closeAddModal() {
@@ -91,5 +93,13 @@ export class DiaryPage implements OnInit {
   setSelectedLog(log: any) {
     this.selectedLog = log;
     this.isViewModalOpen = true;
+  }
+
+  async showToast(message: string) {
+    await Toast.show({
+      text: message,
+      duration: 'short',
+      position: 'top',
+    });
   }
 }

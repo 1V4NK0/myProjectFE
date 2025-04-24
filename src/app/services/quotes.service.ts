@@ -6,7 +6,6 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class QuotesService {
-
   constructor(private httpClient: HttpClient) {}
 
   getRandomQuote(): Observable<any> {
@@ -18,8 +17,10 @@ export class QuotesService {
   }
 
   //if return observable<any> it causes it to crash as it expects blob type, so u need to return blob
-  //img is a binary data 
+  //img is a binary data
   getInspirationalImg(): Observable<Blob> {
-    return this.httpClient.get('http://localhost:3000/api/image', {responseType: "blob"});
+    return this.httpClient.get('http://localhost:3000/api/image', {
+      responseType: 'blob',
+    });
   }
 }
